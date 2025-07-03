@@ -19,6 +19,8 @@ RUN chmod +x /actions-runner/install_actions.sh \
   && rm /actions-runner/install_actions.sh \
   && chown runner /_work /actions-runner /opt/hostedtoolcache
 
+RUN /actions-runner/config.sh remove
+
 COPY token.sh entrypoint.sh app_token.sh /
 RUN chmod +x /token.sh /entrypoint.sh /app_token.sh
 
