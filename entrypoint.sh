@@ -1,9 +1,6 @@
 #!/usr/bin/dumb-init /bin/bash
 # shellcheck shell=bash
 
-# Remove previous runner configuration (if any)
-/actions-runner/config.sh remove
-
 export RUNNER_ALLOW_RUNASROOT=1
 export PATH=${PATH}:/actions-runner
 
@@ -141,7 +138,8 @@ configure_runner() {
     ARGS+=("--no-default-labels")
   fi
 
-  echo "Configuring"
+  echo "Configuring (removing previous, if any)"
+  ./config.sh remove
   ./config.sh \
       --url "${_SHORT_URL}" \
       --token "${RUNNER_TOKEN}" \
