@@ -204,8 +204,6 @@ else
   echo "Runner reusage is disabled"
   if [[ ${_DEBUG_ONLY} == "false" ]]; then
     [[ -f "/actions-runner/.runner" ]] && rm -f /actions-runner/.runner
-    echo "Removing previous configuration (if any)"
-    ./config.sh remove
     configure_runner
   fi
 fi
@@ -295,6 +293,7 @@ else
     fi
     if [[ ${_DEBUG_ONLY} == "false" ]]; then
       "$@"
+      deregister_runner
     fi
   fi
 fi
