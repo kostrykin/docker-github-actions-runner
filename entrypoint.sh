@@ -138,8 +138,7 @@ configure_runner() {
     ARGS+=("--no-default-labels")
   fi
 
-  echo "Configuring (removing previous, if any)"
-  ./config.sh remove
+  echo "Configuring"
   ./config.sh \
       --url "${_SHORT_URL}" \
       --token "${RUNNER_TOKEN}" \
@@ -205,6 +204,8 @@ else
   echo "Runner reusage is disabled"
   if [[ ${_DEBUG_ONLY} == "false" ]]; then
     [[ -f "/actions-runner/.runner" ]] && rm -f /actions-runner/.runner
+    echo "Removing previous configuration (if any)"
+    ./config.sh remove
     configure_runner
   fi
 fi
