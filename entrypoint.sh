@@ -3,4 +3,4 @@
 rm -rf /actions-runner/*
 cp -R /actions-runner-base/* /actions-runner/
 
-/entrypoint-base.sh
+/entrypoint-base.sh $*
