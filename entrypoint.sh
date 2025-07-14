@@ -1,6 +1,6 @@
 #!/usr/bin/dumb-init /bin/bash
 
-rm -rf /actions-runner/*
-cp -R /actions-runner-base/* /actions-runner/
+echo "Removing previous configuration (if any)"
+./config.sh remove
 
 /entrypoint-base.sh $*

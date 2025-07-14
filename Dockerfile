@@ -2,10 +2,7 @@ FROM myoung34/github-runner:latest
 LABEL maintainer="leonid.kostrykin@bioquant.uni-heidelberg.de"
 
 WORKDIR /actions-runner
-RUN mkdir /actions-runner-base \
-  && mv /actions-runner/* /actions-runner-base/ \
-  && mv /entrypoint.sh /entrypoint-base.sh
-
+RUN mv /entrypoint.sh /entrypoint-base.sh
 COPY entrypoint.sh /
 
 ENTRYPOINT ["/entrypoint.sh"]
